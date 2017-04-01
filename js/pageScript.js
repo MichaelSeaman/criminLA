@@ -1,15 +1,7 @@
+//Page script here
+var data = [];
+const DATA_URL_2015 = "https://data.lacity.org/resource/4yt4-9aq2.json";
+const DATA_URL_2016 = "https://data.lacity.org/resource/b6pd-28qb.json";
 
-
-//Loading LAPD Data
-
-$.ajax({
-  url: "https://data.lacity.org/resource/4yt4-9aq2.json",
-  type: "GET",
-  data: {
-    "$limit" : 5000,
-    "$$app_token" : "srn1Ftlq8QD1miN3hWbVXrDzX"
-  }
-}).done(function(data) {
-alert("Retrieved " + data.length + " records from the dataset!");
-console.log(data);
-});
+loadCrimeData(DATA_URL_2015, data, console.log);
+loadCrimeData(DATA_URL_2016, data, console.log);

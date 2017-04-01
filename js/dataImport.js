@@ -11,17 +11,17 @@ function loadCrimeData(url, dataObject, onCompletion) {
     url: url,
     type: "GET",
     data: {
-      "$limit" : 5000,
+      "$limit" : 1000,
       "$$app_token" : LA_CITY_APP_TOKEN
     }
   }).done(function (data) {
-    saveDataChunk(data, dataObject, onCompletion);
+    saveDataChunk(data, dataObject);
+    onCompletion();
   });
 }
 
-function saveDataChunk(dataChunk, dataObject, onCompletion) {
-  dataChunk.forEach(function (row) {
-    dataObject.push(row);
-    onCompletion(row);
-  });
+function saveDataChunk(dataChunk, dataObject) {
+  for (var i = 0; i < dataChunk.length; i++) {
+    dataObject.push(dataChunk[i]);
+  }
 }

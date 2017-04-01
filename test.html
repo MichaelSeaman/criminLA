@@ -1,0 +1,27 @@
+<html>
+<head>
+  <title>Test</title>
+</head>
+<body>
+  <p>
+    Heyo
+  </p>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+<script>
+$.ajax({
+  url: "https://data.lacity.org/resource/4yt4-9aq2.json",
+  type: "GET",
+  data: {
+    "$limit" : 5000,
+    "$$app_token" : "srn1Ftlq8QD1miN3hWbVXrDzX"
+  }
+}).done(function(data) {
+alert("Retrieved " + data.length + " records from the dataset!");
+console.log(data);
+});
+
+
+</script>
+</html>

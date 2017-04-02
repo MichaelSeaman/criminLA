@@ -1,3 +1,4 @@
+
 var map, heatmap;
 
 function initMap() {
@@ -24,8 +25,7 @@ function initMap() {
   var autocomplete = new google.maps.places.Autocomplete(input);
 
   // Set initial restrict to the greater list of countries.
-  autocomplete.setComponentRestrictions(
-	  {'postal_code': '90001'});
+  autocomplete.setComponentRestrictions({'country': 'us'});
 
   var infowindow = new google.maps.InfoWindow();
   var infowindowContent = document.getElementById('infowindow-content');
@@ -73,7 +73,7 @@ function initMap() {
 
   // Sets a listener on a given radio button. The radio buttons specify
   // the countries used to restrict the autocomplete search.
-  function setupClickListener(id, countries) {
+  /*function setupClickListener(id, countries) {
     var radioButton = document.getElementById(id);
     radioButton.addEventListener('click', function() {
 	  autocomplete.setComponentRestrictions({'country': countries});
@@ -82,7 +82,7 @@ function initMap() {
 
   setupClickListener('changecountry-usa', 'us');
   setupClickListener(
-	  'changecountry-usa-and-uot', ['us', 'pr', 'vi', 'gu', 'mp']);
+	  'changecountry-usa-and-uot', ['us', 'pr', 'vi', 'gu', 'mp']);*/
   }
 
   function toggleHeatmap() {

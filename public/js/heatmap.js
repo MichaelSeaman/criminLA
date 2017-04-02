@@ -1046,8 +1046,12 @@ function getPoints() {
 }
 
 function hideIntro() {
-  var intro = document.getElementById('intro');
-    intro.style.display = 'none';
+  console.log("hey");
+  var intro = $("#intro");
+  intro.empty();
+  intro.html('<div class="col-xs-12">    <div id="chartHere" class="col-xs-8">       </div>    <div class="col-xs-4">      <p>        Hey      </p>      <p>        Yo      </p>    </div>  </div>');
+  $("#chartHere").append('<canvas id ="lineChart"></canvas>');
+  tempGrapher();
 }
 
 function updateGraph() {

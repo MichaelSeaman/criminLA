@@ -1,3 +1,4 @@
+
 var map, heatmap;
 
 function initMap() {
@@ -24,8 +25,7 @@ function initMap() {
   var autocomplete = new google.maps.places.Autocomplete(input);
 
   // Set initial restrict to the greater list of countries.
-  autocomplete.setComponentRestrictions(
-	  {'postal_code': '90001'});
+  autocomplete.setComponentRestrictions({'country': 'us'});
 
   var infowindow = new google.maps.InfoWindow();
   var infowindowContent = document.getElementById('infowindow-content');

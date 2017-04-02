@@ -21,7 +21,7 @@
 
 <!-- Main Page Code here, Bella -->
    <nav class="navbar navbar-default" role="navigation">
-    <div class="container">
+    <div class="container" id="pleaseWork">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse">
           <span class="sr-only">Toggle navigation</span>
@@ -34,16 +34,19 @@
 
     <div class="row">
       <section class="col-sm-12">
-        <div class = "jumbotron">
+        <div class="jumbotron" id="intro">
           <h2>Our Mission: Keeping YOU in the know about LA Crime</h2>
           <blockquote>We strive to show our fellow LA goers their safety at their current or possible position.  Whether you are traveling to LA for the first time or you have a child who likes to roam around, we want to make sure YOU know the dangerous areas to stay away from.</blockquote>
+        </div>
+        <div class="jumbotron" id="lineChartContainer" style="display: none">
+          <canvas id ="lineChart"></canvas>
         </div>
       </section>
     </div>
     </div>
   </nav>
   <div id="lineChartContainer" class="container">
-    <canvas id="lineChart"></canvas>
+    <canvas id="lineChart" style="padding-bottom: 30px"></canvas>
   </div>
   <div id="map"></div>
 

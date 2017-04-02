@@ -42,27 +42,30 @@ function initMap() {
     if (!place.geometry) {
 	  // User entered the name of a Place that was not suggested and
 	  // pressed the Enter key, or the Place Details request failed.
-	  window.alert("No details available for input: '" + place.name + "'");
-	  return;
-  }
+	    window.alert("No details available for input: '" + place.name + "'");
+	    return;
+    } else {
+      hideIntro();
+      updateGraph();
+    }
 
-  // If the place has a geometry, then present it on a map.
-  if (place.geometry.viewport) {
-	  map.fitBounds(place.geometry.viewport);
-  } else {
-	  map.setCenter(place.geometry.location);
-	  map.setZoom(17);  // Why 17? Because it looks good.
-  }
-  marker.setPosition(place.geometry.location);
-  marker.setVisible(true);
+    // If the place has a geometry, then present it on a map.
+    if (place.geometry.viewport) {
+	    map.fitBounds(place.geometry.viewport);
+    } else {
+	    map.setCenter(place.geometry.location);
+	    map.setZoom(17);  // Why 17? Because it looks good.
+    }
+    marker.setPosition(place.geometry.location);
+    marker.setVisible(true);
 
-  var address = '';
-  if (place.address_components) {
-	  address = [
-	    (place.address_components[0] && place.address_components[0].short_name || ''),
-	    (place.address_components[1] && place.address_components[1].short_name || ''),
-	    (place.address_components[2] && place.address_components[2].short_name || '')
-	    ].join(' ');
+    var address = '';
+    if (place.address_components) {
+	    address = [
+	      (place.address_components[0] && place.address_components[0].short_name || ''),
+	      (place.address_components[1] && place.address_components[1].short_name || ''),
+	      (place.address_components[2] && place.address_components[2].short_name || '')
+	      ].join(' ');
     }
 
     infowindowContent.children['place-icon'].src = place.icon;
@@ -1040,4 +1043,14 @@ function getPoints() {
     new google.maps.LatLng(34.011900,-118.349900),
     new google.maps.LatLng(34.020400,-118.280900)
   ];
+}
+
+function hideIntro() {
+  var intro = document.getElementById('intro');
+    intro.style.display = 'none';
+}
+
+function updateGraph() {
+  var graph = document.getElementById('lineChartContainer')
+    graph.style.display = 'block';
 }

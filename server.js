@@ -17,7 +17,7 @@ app.get('/recordsByArea', function (req, res) {
   var posLat = req.query.posLat;
   var posLong = req.query.posLong;
   var radius = req.query.radius;
-  var procedureString = `getLocalTimeData(${posLat}, ${posLong}, ${radius})`;
+  var procedureString = 'getLocalTimeData('+ posLat+', '+posLong+', '+radius+')';
   sqlMethods.executeStoredProcedure(procedureString, function (data, err) {
     res.end("" + JSON.stringify(arguments));
   });
@@ -36,7 +36,7 @@ app.use(function (req, res, next) {
 
 //Server startup
 var server = app.listen(port, function () {
-  console.log(`Listening on port ${port}`);
+  console.log('Listening on port ${port}');
 });
 
 //Closing gracefully

@@ -1,4 +1,4 @@
 # CriminLA
 ### Keeping YOU in the know about LA Crime
 
-Contributors: Michael Seaman, Angus Yip, Isabella Pepke
+Contributors: Isa(B)ella Pepke, (A)ngus Yip, (M)ichael Seaman

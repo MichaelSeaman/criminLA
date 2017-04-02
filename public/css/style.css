@@ -9,15 +9,16 @@
 .optionsToggle {
   background-color: rgba(82, 199, 254, .9);
 }
-/*.graphContainer{
-  height: 200px;
-  width: 200px;
 
-}*/
+#lineChart{
+  margin:0 auto;
+  max-height: 80; 
+}
 
 #map {
   height: 70%;
   width: 70%;
+  margin:0 auto;
 }
   /* Optional: Makes the sample page fill the window. */
 html, body {

@@ -220,8 +220,6 @@ function initMap() {
 
     var radius = 5; //miles
     getRecordsInArea(lat, long, radius);
-    //hideIntro();
-    //updateGraph();
 
     marker.setPosition(place.geometry.location);
     marker.setVisible(true);

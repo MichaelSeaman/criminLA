@@ -15,10 +15,12 @@ SELECT count(*) FROM crime;
 #Remember to create an index
 
 DELIMITER //
+
 CREATE PROCEDURE getAllLocData()
 BEGIN
-  SELECT Name, HeadOfState FROM Country
-  WHERE Continent = con;
+  SELECT longitude, latitude FROM crime
+  WHERE NOT longitude = 0.0 AND
+  NOT latitude = 0.0;
 END //
 DELIMITER ;
 

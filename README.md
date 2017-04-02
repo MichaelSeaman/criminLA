@@ -26,19 +26,19 @@ Public safety is seen by some as the most important role of local government. In
 The City of Los Angeles generously provided the public with many extensive datasets to work with, and we were determined to make use of the dataset "Arrests Made in the City of Los Angeles" to address our's and most of everyone else's concern that is SAFETY. Our way of doing that is by visualizing the frequency of arrests made using a heatmap, and accompany that with local statics with metrics showing which type of crime and time of day to specifically look out for.
 
 ## Dataset to database
-An API were available for the aforementioned dataset, and we were successful in requesting the data and storing it in our own database hosted on Amazon Web Services.
+An API were available for the aforementioned dataset, and we were successful in requesting the data and storing it in our own MySQL database hosted on Amazon Web Services.
 
 ## Google Maps API
 We are using Google Maps API to show the basic restricted and stylized map on the index.html page. The restriction is only in place as we only have data for LA (for the time being). The search should work for any address in the US (and worldwide eventually) despite the lack of data.
 
 ## Heatmap
-There is an overlay object within the Google Maps API that we could use to express a heatmap. The heatmap is populated by the exact locations arrests were made during the last year.
+There is an overlay object within the Google Maps API that we could use to express a heatmap. The heatmap is populated by the exact locations of arrests made during the last year.
 
 ## Bootstrapper
+The main site is organized and built with modern web design philosophies in mind on Bootstrapper.
 
 ## Chart.js
-
-## I'm sure there are more stuff here. add them please
+Our graphs above the map that are meant to show the local analytics are wrapped into elements with Chart.js, a data visualization library.
 
 =======
 Contributors: Isa(B)ella Pepke, (A)ngus Yip, (M)ichael Seaman

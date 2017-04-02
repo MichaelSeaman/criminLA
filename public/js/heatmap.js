@@ -4,7 +4,7 @@ var map, heatmap;
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 11,
-    center: {lat: 34.052235, lng: -118.243683},
+    center: {lat: 34.072235, lng: -118.343683},
     mapTypeId: 'roadmap',
     scrollwheel: false,
     draggable: false,
@@ -92,7 +92,7 @@ function initMap() {
     "elementType": "geometry",
     "stylers": [
       {
-        "color": "#ff8000"
+        "color": "#ffc082"
       }
     ]
   },
@@ -173,7 +173,8 @@ function initMap() {
 
   heatmap = new google.maps.visualization.HeatmapLayer({
     data: getPoints(),
-    map: map
+    map: map,
+    radius: 20
   });
 
   var card = document.getElementById('pac-card');

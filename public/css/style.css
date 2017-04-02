@@ -10,15 +10,15 @@
   background-color: rgba(82, 199, 254, .9);
 }
 
-#lineChartContainer{
+#lineChartContainer {
   margin:0 auto;
-  max-height: 80; 
-}//*only took me about a billion hours right here*/
+  max-height: 80;
+}/*only took me about a billion hours right here*/
 
 #map {
   height: 70%;
   width: 70%;
-  margin:0 auto;
+  margin: 0 auto;
 }
   /* Optional: Makes the sample page fill the window. */
 html, body {

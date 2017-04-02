@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LA Criminal Heatmap</title>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Minified Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Bootstrap Theme -->
+  <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+
+</head>
+<body>
+
+<!-- Main Page Code here, Bella -->
+   <nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#featured">B A M </a>
+      </div>
+
+    <div class="row">
+      <section class="col-sm-12">
+        <div class = "jumbotron">
+          <h2>Our Mission: Keeping YOU in the know about LA Crime</h2>
+          <blockquote>We strive to show our fellow LA goers their safety at their current or possible position.  Whether you are traveling to LA for the first time or you have a child who likes to roam around, we want to make sure YOU know the dangerous areas to stay away from.</blockquote>
+        </div>
+      </section>
+    </div>
+  </div>
+  </nav>
+  <div id="map"></div>
+  <div class="container">
+    <section class="col-sm-6">
+      <h3>LA Public Safety</h3>
+      <p>Public safety is seen by some as the most important role of local government. In the County this includes providing sheriff and fire services to all the unincorporated areas and many of the cities; protecting beachgoers; rescuing stranded and lost hikers, traffic accident victims, persons who have fallen into flood control channels; treating medical emergencies; and prosecuting, defending and sentencing those charged with crimes.</p>
+    </section>
+
+    <section class="col-sm-6">
+      <h3>Grooming</h3>
+      <p>Our therapeutic grooming treatments help battle fleas, allergic dermatitis, and other challenging skin conditions.</p>
+    </section>
+  <!-- row -->
+    <div class = "row">
+      <div class="col-lg-6 col-lg-offset-3 text-center">
+        <!-- <div class = "media">
+          <div class="media-bottom media-left">-->
+          <br><br><br><br><br><br>
+            <a href="#"> <img class="media-bottom" style=" padding-bottom: 100px;" src="https://lahacks.com/images/lahacks_logo.svg"></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TO BE REPLACED~~JUST DEMO-->
+  <div class="pac-card" id="pac-card">
+    <div>
+      <div id="title">
+        Countries
+      </div>
+      <div id="country-selector" class="pac-controls">
+        <input type="radio" name="type" id="changecountry-usa">
+        <label for="changecountry-usa">USA</label>
+
+        <input type="radio" name="type" id="changecountry-usa-and-uot" checked="checked">
+        <label for="changecountry-usa-and-uot">USA and unincorporated organized territories</label>
+      </div>
+    </div>
+    <div id="pac-container">
+      <input id="pac-input" type="text"
+        placeholder="Enter a location">
+    </div>
+  </div>
+  <div id="infowindow-content">
+    <img src="" width="16" height="16" id="place-icon">
+    <span id="place-name"  class="title"></span><br>
+    <span id="place-address"></span>
+  </div>
+  <!--<div id="floating-panel">
+    <button onclick="toggleHeatmap()">Toggle Heatmap</button>
+    <button onclick="changeGradient()">Change gradient</button>
+    <button onclick="changeRadius()">Change radius</button>
+    <button onclick="changeOpacity()">Change opacity</button>
+  </div>-->
+
+
+	<div id="infowindow-content">
+    <img src="" width="16" height="16" id="place-icon">
+    <span id="place-name"  class="title"></span><br>
+    <span id="place-address"></span>
+  </div>
+  <!--DEMO END-->
+
+  <!-- Latest compiled and minified JQuery -->
+  <script src="js/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="js/bootstrap.min.js"></script>
+  <!-- The JS code that we're going to be hacking on -->
+  <script src="js/dataImport.js"></script>
+  <script src="js/pageScript.js"></script>
+  <script src="js/heatmap.js"></script>
+  <script src="js/Chart.min.js"></script>
+
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAm3kbUmNFzjgaQfptS1SpqmMXtsl_rwgc&libraries=visualization,places&callback=initMap">
+  </script>
+</body>
+</html>

@@ -10,7 +10,7 @@ Succinctly put: We are three students from vastly different backgrounds with a c
 
 =======
 # Why?
-## Awareness -- the best defence
+## Awareness -- the best defense
 At CriminLA, we strive to provide clear data visualization with an intuitive UI so a city's (LA, for now) criminal statistics is readily available to the general public. This goes hand-in-hand with our data analysis specifically highlighting the type of crime to look out for and the most dangerous time of day at any given local area.
 
 ## The money shot: Our vision on why THIS is important
@@ -26,7 +26,7 @@ Public safety is seen by some as the most important role of local government. In
 The City of Los Angeles generously provided the public with many extensive datasets to work with, and we were determined to make use of the dataset "Arrests Made in the City of Los Angeles" to address our's and most of everyone else's concern that is SAFETY. Our way of doing that is by visualizing the frequency of arrests made using a heatmap, and accompany that with local statics with metrics showing which type of crime and time of day to specifically look out for.
 
 ## Dataset to database
-An API were available for the aforementioned dataset, and we were successful in requesting the data and storing it at our own database hosted on Amazon Web Services.
+An API were available for the aforementioned dataset, and we were successful in requesting the data and storing it in our own database hosted on Amazon Web Services.
 
 ## Google Maps API
 We are using Google Maps API to show the basic restricted and stylized map on the index.html page. The restriction is only in place as we only have data for LA (for the time being). The search should work for any address in the US (and worldwide eventually) despite the lack of data.

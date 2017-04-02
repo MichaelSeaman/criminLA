@@ -12,8 +12,14 @@
 
 #lineChartContainer{
   margin:0 auto;
-  max-height: 80; 
+  max-height: 400px; 
+  max-width: 400px;
 }/*only took me about a billion hours right here*/
+
+#please{
+  background-color: black;
+
+}
 
 #map {
   height: 70%;

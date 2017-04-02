@@ -9,10 +9,16 @@
 .optionsToggle {
   background-color: rgba(82, 199, 254, .9);
 }
+.graphContainer{
+  height: 200px;
+  width: 200px;
+  position: center;
+
+}
 
 #map {
   height: 70%;
-  width: 100%;
+  width: 70%;
 }
   /* Optional: Makes the sample page fill the window. */
 html, body {

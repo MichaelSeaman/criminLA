@@ -40,11 +40,13 @@
         </div>
       </section>
     </div>
-  </div>
+    </div>
   </nav>
-
-  <canvas id ="lineChart" height="200" width="400"></canvas>
-
+  <header class="graphContainer">
+    <div class="container ">
+      <canvas id ="lineChart" height="30"  style ="width: 30px; height: 40px;" ></canvas>
+    </div>
+  </header>
   <div id="map"></div>
   <div class="container">
     <section class="col-sm-6">
@@ -115,7 +117,8 @@
   <script src="js/pageScript.js"></script>
   <script src="js/heatmap.js"></script>
   <script src="js/Chart.min.js"></script>
-
+  <!--<script src="js/vendor/modernizr-2.8.3.min.js"></script>-->
+  <script src="js/graphDemo.js"></script>
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAm3kbUmNFzjgaQfptS1SpqmMXtsl_rwgc&libraries=visualization,places&callback=initMap">
   </script>

@@ -4,7 +4,9 @@ function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 11,
     center: {lat: 34.052235, lng: -118.243683},
-    mapTypeId: 'roadmap'
+    mapTypeId: 'roadmap',
+    scrollwheel: false,
+    draggable: false
   });
 
   heatmap = new google.maps.visualization.HeatmapLayer({

@@ -10,10 +10,13 @@
   background-color: rgba(82, 199, 254, .9);
 }
 
-#lineChartContainer{
+#lineChartContainer {
   margin:0 auto;
+
   max-height: 400px; 
   max-width: 400px;
+  max-height: 50%;
+
 }/*only took me about a billion hours right here*/
 
 #please{
@@ -24,7 +27,7 @@
 #map {
   height: 70%;
   width: 70%;
-  margin:0 auto;
+  margin: 0 auto;
 }
   /* Optional: Makes the sample page fill the window. */
 html, body {

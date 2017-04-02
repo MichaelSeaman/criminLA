@@ -16,6 +16,7 @@
 }
   /* Optional: Makes the sample page fill the window. */
 html, body {
+  font:Courier;
   height: 100%;
   margin: 0;
   padding: 0;

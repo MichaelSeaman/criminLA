@@ -36,8 +36,6 @@ function initMap() {
   });
 
   autocomplete.addListener('place_changed', function() {
-    hideIntro();
-    updateGraph();
     infowindow.close();
     marker.setVisible(false);
     var place = autocomplete.getPlace();
@@ -46,6 +44,9 @@ function initMap() {
 	  // pressed the Enter key, or the Place Details request failed.
 	    window.alert("No details available for input: '" + place.name + "'");
 	    return;
+    } else {
+      hideIntro();
+      updateGraph();
     }
 
     // If the place has a geometry, then present it on a map.

@@ -8,11 +8,10 @@
 
 .optionsToggle {
   background-color: rgba(82, 199, 254, .9);
+  padding-bottom: 15px;
 }
 #intro {
   margin:0 auto;
-
-  min-height: 240px;
 }
 
 #lineChart {
@@ -23,11 +22,6 @@
   max-height: 50%;
 
 }/*only took me about a billion hours right here*/
-
-#please{
-  background-color: black;
-
-}
 
 #map {
   height: 70%;

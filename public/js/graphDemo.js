@@ -1,17 +1,26 @@
 //first graph demo
-function tempGrapher() {
+
+function makeGraph(inputData) {
+
+	//data loop
+	var myArray = [];
+	for (var i = 0; i < inputData.length; i++) {
+		console.log(inputData[i]);
+		console.log(inputData[i].total);
+	 	myArray[i] = inputData[i].total; 
+	}
 	const CHART = document.getElementById("lineChart");
 	console.log(CHART);
 	let lineChart = new Chart(CHART, {
 		type: 'line',
 		data: data =  {
-			labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+			labels: ["January", "December"],
 	        datasets: [{
-	            label: '# of Votes',
-	            data: [12, 19, 3, 5, 2, 3],
+	            label: '# of Crimes',
+	            data: myArray,
 	            backgroundColor: [
-	                'rgba(255, 99, 132, 0.2)',
-	                'rgba(54, 162, 235, 0.2)',
+	                'rgba(3, 99, 132, 0.2)',/*the graph fill color*/
+	                'rgba(54, 162, 235, 0.2)',/*the graph fill color*/
 	                'rgba(255, 206, 86, 0.2)',
 	                'rgba(75, 192, 192, 0.2)',
 	                'rgba(153, 102, 255, 0.2)',
@@ -32,7 +41,8 @@ function tempGrapher() {
 	        scales: {
 	            yAxes: [{
 	                ticks: {
-	                    beginAtZero:false
+	                    //Change ticks-- just put in the first and last pt
+
 	                }
 	            }]
 	        }

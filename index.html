@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LA Criminal Heatmap</title>
+
+  <!-- Minified Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Bootstrap Theme -->
+  <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+
+</head>
+<body>
+
+<!-- Main Page Code here, Bella -->
+
+  <!-- Latest compiled and minified JQuery -->
+  <script src="js/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="js/bootstrap.min.js"></script>
+  <!-- The JS code that we're going to be hacking on -->
+  <script src="js/dataImport.js"></script>
+  <script src="js/pageScript.js"></script>
+  <script src="js/heatmap.js"></script>
+  
+  <!-- TO BE REPLACED~~JUST DEMO-->
+  <div class="pac-card" id="pac-card">
+    <div>
+      <div id="title">
+        Countries
+      </div>
+      <div id="country-selector" class="pac-controls">
+        <input type="radio" name="type" id="changecountry-usa">
+        <label for="changecountry-usa">USA</label>
+
+        <input type="radio" name="type" id="changecountry-usa-and-uot" checked="checked">
+        <label for="changecountry-usa-and-uot">USA and unincorporated organized territories</label>
+      </div>
+    </div>
+    <div id="pac-container">
+      <input id="pac-input" type="text"
+        placeholder="Enter a location">
+    </div>
+  </div>
+  <div id="infowindow-content">
+    <img src="" width="16" height="16" id="place-icon">
+    <span id="place-name"  class="title"></span><br>
+    <span id="place-address"></span>
+  </div>
+  <div id="floating-panel">
+    <button onclick="toggleHeatmap()">Toggle Heatmap</button>
+    <button onclick="changeGradient()">Change gradient</button>
+    <button onclick="changeRadius()">Change radius</button>
+    <button onclick="changeOpacity()">Change opacity</button>
+  </div>
+  <div id="map"></div>
+	<div id="infowindow-content">
+    <img src="" width="16" height="16" id="place-icon">
+    <span id="place-name"  class="title"></span><br>
+    <span id="place-address"></span>
+  </div>
+  <!--DEMO END-->
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAm3kbUmNFzjgaQfptS1SpqmMXtsl_rwgc&libraries=visualization,places&callback=initMap">
+  </script>
+</body>
+</html>

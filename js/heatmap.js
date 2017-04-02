@@ -6,7 +6,8 @@ function initMap() {
     center: {lat: 34.052235, lng: -118.243683},
     mapTypeId: 'roadmap',
     scrollwheel: false,
-    draggable: false
+    draggable: false,
+    disableDefaultUI: true
   });
 
   heatmap = new google.maps.visualization.HeatmapLayer({

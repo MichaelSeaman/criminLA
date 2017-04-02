@@ -1,0 +1,125 @@
+const mysql = require('mysql');
+
+var pool = mysql.createPool({
+  host  : 'localhost',
+  user  : 'root',
+  password  : 'mjs2956',
+  database  : 'crime',
+  debug : false,
+  multipleStatements : true,
+  queneLimit  : 200
+});
+
+function endPool() {
+  pool.end();
+}
+
+function executeQuery(queryString, callback, extraData) {
+  outStream = callback || console.log;
+  var output = {};
+
+  pool.getConnection(function (err, connection) {
+    if(err) {
+      outStream(output, extraData, err);
+      throw err;
+    }
+    console.log(queryString + " has connected with ID: " + connection.threadId);
+
+    connection.query(queryString, function (err, rows) {
+      connection.release();
+      if(err) {
+        outStream(output, extraData, err);
+        throw err;
+      }
+      output = rows;
+      outStream(output, extraData);
+    });
+
+  });
+
+}
+
+function insertValuesToTable(values, colNames, tableName, extraData, callback) {
+  //Inserts values into the columns of the table provided, and
+  //sends the data to the callback
+  var updateString = "INSERT INTO ??(??";
+  for (var i = 0; i < colNames.length - 1; i++) {
+    updateString += ", ??";
+  }
+  updateString += ") VALUES (?";
+  for (var i = 0; i < values.length - 1; i++) {
+    updateString += ", ?";
+  }
+  updateString += ");";
+
+  updateString = mysql.format(updateString, tableName);
+  updateString = mysql.format(updateString, colNames);
+  updateString = mysql.format(updateString, values);
+
+  executeQuery(updateString, callback, extraData);
+
+}
+
+function updateRowWithID(id, idColName, values, colNames, tableName, callback) {
+  //Updates the row in tableName where the id in
+  //idColName = id and sets colNames to values, sending the result to callback
+  //expects values and colNames as an array object
+
+  var updateString = "UPDATE ?? SET ??=?";
+  for (var i = 0; i < colNames.length - 1; i++) {
+    updateString += ", ??=?";
+  }
+  updateString += " WHERE ??=?;"
+
+  updateString = mysql.format(updateString, tableName);
+  for (var i = 0; i < colNames.length; i++) {
+    updateString = mysql.format(updateString, [colNames[i], values[i]] );
+  }
+  updateString = mysql.format(updateString, [idColName, id]);
+
+  executeQuery(updateString, callback);
+}
+
+function selectStar(tableName, callback) {
+  var queryString = "SELECT * FROM ??;";
+  var inserts = [tableName];
+  queryString = mysql.format(queryString, inserts);
+  executeQuery(queryString, callback);
+}
+
+function displayTable(tableName, callback) {
+  var queryString = "SELECT * FROM ??;";
+  var inserts = [tableName];
+  queryString = mysql.format(queryString, inserts);
+  executeQuery(queryString, callback);
+}
+
+function searchTableByColumn(tableName, columnName, value, callback) {
+  var queryString = "SELECT * FROM ?? WHERE ?? = ?;";
+  var inserts = [tableName, columnName, value];
+  queryString = mysql.format(queryString, inserts);
+  executeQuery(queryString, callback);
+}
+
+function searchTableByColumnLike(tableName, columnName, value, callback) {
+  var queryString = "SELECT * FROM ?? WHERE ?? LIKE ?;";
+  var inserts = [tableName, columnName, value];
+  queryString = mysql.format(queryString, inserts);
+  executeQuery(queryString, callback);
+}
+
+function executeStoredProcedure(procedure, callback) {
+  var queryString = "CALL " + procedure + ";";
+  queryString = mysql.format(queryString, procedure);
+  executeQuery(queryString, callback);
+}
+
+module.exports.insertValuesToTable = insertValuesToTable;
+module.exports.searchTableByColumn = searchTableByColumn;
+module.exports.searchTableByColumnLike = searchTableByColumnLike;
+module.exports.executeStoredProcedure = executeStoredProcedure;
+module.exports.updateRowWithID = updateRowWithID;
+module.exports.selectStar = selectStar;
+module.exports.displayTable = displayTable;
+module.exports.executeQuery = executeQuery;
+module.exports.endPool = endPool;

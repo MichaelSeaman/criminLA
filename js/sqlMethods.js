@@ -1,9 +1,9 @@
 const mysql = require('mysql');
 
 var pool = mysql.createPool({
-  host  : 'localhost',
-  user  : 'root',
-  password  : 'mjs2956',
+  host  : 'bamhacks-crimedb-cluster.cluster-cyzbw0vsztnq.us-west-2.rds.amazonaws.com',
+  user  : 'crimeadmin',
+  password  : 'bambambam',
   database  : 'crime',
   debug : false,
   multipleStatements : true,
@@ -29,7 +29,7 @@ function executeQuery(queryString, callback, extraData) {
       connection.release();
       if(err) {
         outStream(output, extraData, err);
-        throw err;
+        //throw err;
       }
       output = rows;
       outStream(output, extraData);

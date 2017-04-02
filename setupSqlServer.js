@@ -12,6 +12,7 @@ for (var i = 0; i < sqlCommands.length; i++) {
   if(sqlCommands[i] != ";") {
     sqlMethods.executeQuery(sqlCommands[i], console.log);
   }
+  sqlMethods.selectStar('crime');
 }
 
 function insertRow(row) {
@@ -19,24 +20,32 @@ function insertRow(row) {
   var entries = row.split(',');
   var dateString = entries[0].split(' ')[0];
   var timestring = entries[1];
-  var d = new Date(dateString + ' ' + timestringToTime(timestring));
+  var date = null;
+  if(dateString != "" && timestring != "" ) {
+    var d = new Date(dateString + ' ' + timestringToTime(timestring));
+    date = d.toISOString().substring(0, 19).replace('T', ' ');
 
-  var pair = entries[16] + ',' + entries[17];
-  var latString = entries[16].replace('"','').replace('(','').replace(' ', '');
-  var longString = entries[17].replace('"','').replace(')','').replace(' ', '');
-
+  }
+  var latitude = null;
+  var longitude = null;
+  if(entries[16] && entries[17]){
+    var latString = entries[16].replace('"','').replace('(','').replace(' ', '');
+    var longString = entries[17].replace('"','').replace(')','').replace(' ', '');
+    latitude = parseFloat(latString);
+    longitude = parseFloat(longString);
+    if(latitude == NaN || longitude == NaN) {
+      latitude = null;
+      longitude = null;
+    }
+  }
 
   var rpt_id = parseInt(entries[2])
-  var date = d.toISOString().substring(0, 19).replace('T', ' ');
   var area = entries[3]
   var area_desc = entries[3]
   var age = parseInt(entries[6]);
   var sex = entries[7];
   var charge = entries[12];
   var charge_desc = entries[13];
-  var pair = entries[16] + ',' + entries[17];
-  var latitude = parseFloat(latString);
-  var longitude = parseFloat(longString);
   var values = [rpt_id, date, area, area_desc, age, sex, charge, charge_desc, longitude, latitude];
   var colNames = ['rpt_id', 'arst_date', 'area' , 'area_desc', 'age' , 'sex', 'charge', 'charge_desc', 'latitude', 'longitude'];
   var tableName = 'crime';
@@ -60,8 +69,13 @@ function timestringToTime(timestring) {
   return (h + ":" + m + ":" + s);
 }
 
-fs.readFileSync(DATA_2015_FILE).toString().split('\n').forEach(insertRow);
-fs.readFileSync(DATA_2016_FILE).toString().split('\n').forEach(insertRow);
+textData2015 = fs.readFileSync(DATA_2015_FILE).toString().split('\n');
+textData2015.shift()
+textData2015.forEach(insertRow);
+
+textData2016 = fs.readFileSync(DATA_2016_FILE).toString().split('\n');
+textData2016.shift()
+textData2016.forEach(insertRow);
 
 
 //Closing gracefully

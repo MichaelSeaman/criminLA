@@ -1,20 +1,23 @@
 //first graph demo
 
 function makeGraph(inputData) {
-
 	//data loop
 	var myArray = [];
+	var labels = [];
+	var numUsefulrows = 1;
 	for (var i = 0; i < inputData.length; i++) {
-		console.log(inputData[i]);
-		console.log(inputData[i].total);
-	 	myArray[i] = inputData[i].total; 
+		if(inputData[i].total != null){
+			myArray.push(inputData[i].total);
+			labels.push( "Week" + (numUsefulrows++) );
+		}
 	}
+	console.log(myArray);
 	const CHART = document.getElementById("lineChart");
 	console.log(CHART);
 	let lineChart = new Chart(CHART, {
 		type: 'line',
 		data: data =  {
-			labels: ["January", "December"],
+			labels: labels,
 	        datasets: [{
 	            label: '# of Crimes',
 	            data: myArray,

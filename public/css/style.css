@@ -9,12 +9,11 @@
 .optionsToggle {
   background-color: rgba(82, 199, 254, .9);
 }
-.graphContainer{
+/*.graphContainer{
   height: 200px;
   width: 200px;
-  position: center;
 
-}
+}*/
 
 #map {
   height: 70%;

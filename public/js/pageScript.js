@@ -1,34 +1,44 @@
 //Page script here
-var data = [];
-const DATA_URL_2015 = "https://data.lacity.org/resource/4yt4-9aq2.json";
-const DATA_URL_2016 = "https://data.lacity.org/resource/b6pd-28qb.json";
 
-loadCrimeData(DATA_URL_2015, data, updateMap);
-loadCrimeData(DATA_URL_2016, data, updateMap);
+function getRecordsInArea(placeObject, radius) {
+  console.log(placeObject);
+  geocoder = new google.maps.Geocoder();
+  console.log(placeObject.id);
+  geocoder.geocode( { 'placeId' : placeObject.id }, function( results, status ) {
+        console.log("geocode back");
+        if( status == google.maps.GeocoderStatus.OK ) {
+            var posLat = results[0].geometry.location.lat();
+            var posLong = results[0].geometry.location.lng();
+            console.log(results[0].geometry.location);
+            $.post("/recordsByArea", {
+                  "posLat": posLat,
+                  "posLong": posLong,
+                  "radius": radius
+                }, function (data, err) {
+                  console.log(data);
+                  //makeGraph(data)
+                  hideIntro();
+                  updateGraph();
+                });
 
-function updateMap() {
+        } else {
+            console.log( 'Geocode was not successful for the following reason: ' + status );
+        }
+    } );
+  var posLat;
+  var posLong;
 
-  var long_lat = getLocationsFromData(data);
-  // long_lat is a 2d array as such: [long, lat]
-
-  //Do the map updating here
-  console.log(long_lat);
 }
 
-function getLocationsFromData(data){
-  //Takes full dataset and returns 2 arrays - long and lat
-  //with 0,0s filtered out
-  console.log("Locations called");
-  longs = [];
-  lats = [];
-  for (var i = 0; i < data.length; i++) {
-    long = data[i].location_1.coordinates[0]
-    lat = data[i].location_1.coordinates[1]
-    if(!(long == 0 && lat == 0)) {
-      longs.push(long);
-      lats.push(lat);
-    }
+function hideIntro() {
+  var intro = $("#intro");
+  intro.empty();
+  intro.html('<div class="col-xs-12">    <div id="chartHere" class="col-xs-8">       </div>    <div class="col-xs-4">      <p>        Hey      </p>      <p>        Yo      </p>    </div>  </div>');
+  $("#chartHere").append('<canvas id ="lineChart"></canvas>');
+  tempGrapher();
+}
 
-  }
-  return [longs, lats];
+function updateGraph() {
+  var graph = document.getElementById('lineChartContainer')
+    graph.style.display = 'block';
 }

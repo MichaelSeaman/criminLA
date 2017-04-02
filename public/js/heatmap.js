@@ -45,8 +45,10 @@ function initMap() {
 	    window.alert("No details available for input: '" + place.name + "'");
 	    return;
     } else {
-      hideIntro();
-      updateGraph();
+      var radius = 5; //miles
+      getRecordsInArea(place, radius);
+      //hideIntro();
+      //updateGraph();
     }
 
     // If the place has a geometry, then present it on a map.
@@ -1043,18 +1045,4 @@ function getPoints() {
     new google.maps.LatLng(34.011900,-118.349900),
     new google.maps.LatLng(34.020400,-118.280900)
   ];
-}
-
-function hideIntro() {
-  console.log("hey");
-  var intro = $("#intro");
-  intro.empty();
-  intro.html('<div class="col-xs-12">    <div id="chartHere" class="col-xs-8">       </div>    <div class="col-xs-4">      <p>        Hey      </p>      <p>        Yo      </p>    </div>  </div>');
-  $("#chartHere").append('<canvas id ="lineChart"></canvas>');
-  tempGrapher();
-}
-
-function updateGraph() {
-  var graph = document.getElementById('lineChartContainer')
-    graph.style.display = 'block';
 }
